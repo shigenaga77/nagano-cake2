@@ -1,0 +1,16 @@
+<h2>商品詳細</h2>
+    <div>画像</div>
+    <ul>
+        <li>商品名</li>
+        <p><%= link_to item.name, item_path(@item.id) %></p>
+        <li>商品説明</li>
+        <p><%= link_to item.introduction, item_path(@item.id) %></p>
+        <li>ジャンル</li>
+        <p>ジャンル</p>
+        <li>税込価格<br>
+            （税抜価格）</li>
+        <p><%= @item.price %></p>
+        <li>販売ステータス</li>
+        <p>ステータス</p>
+    </ul>
+    <div><%= link_to "編集する", edit_admin_item_path(item.id) %></div>
