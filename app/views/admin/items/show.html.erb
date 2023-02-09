@@ -6,7 +6,10 @@
         <li>商品説明</li>
         <p><%= link_to item.introduction, item_path(@item.id) %></p>
         <li>ジャンル</li>
-        <p>ジャンル</p>
+        <p><% @book.tags.each do |tag| %>
+                <%= tag.name %>
+            <% end %>
+        </p>
         <li>税込価格<br>
             （税抜価格）</li>
         <p><%= @item.price %></p>

@@ -12,10 +12,19 @@
             <tbody>
                 <% @items.each do |item| %>
                 <tr>
+                    <p>画像</p>
+                      <% if item.image.attached? %>
+                        <%= image_tag item.image, size: "200x200" %>
+                      <% else %>
+                        <%= image_tag 'no_image', size: "200x200" %>
+                      <% end %>
                     <td><%= @item.id %></td>
                     <td><%= link_to item.name, item_path(@item.id) %></td>
                     <td><%= @item.price %></td>
-                    <td></td>
+                    <td><% b.tags.each do |tag| %>
+                            <%= tag.name %>
+                         <% end %>
+                    </td>
                     <td></td>
                 </tr>
                 <% end %>

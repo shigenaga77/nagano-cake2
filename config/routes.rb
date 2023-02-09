@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :genre_items
+  devise_for :genres
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -14,8 +16,10 @@ Rails.application.routes.draw do
   
    # 管理者側のルーティング設定
   namespace :admin do
-    get 'homes' => 'homes#top'
+    root 'homes#top'
     resources :items
+    resources :genres
+    resources :genre_items
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
