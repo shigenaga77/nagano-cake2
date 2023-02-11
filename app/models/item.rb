@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-    has_many :genre_items
-    has_many :genres, through: :genre_items
-
+    has_one_attached :image
+    belongs_to :genre
 end

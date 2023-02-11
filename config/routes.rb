@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :genre_items
   devise_for :genres
   # 顧客用
   # URL /customers/sign_in ...
@@ -17,9 +16,10 @@ Rails.application.routes.draw do
    # 管理者側のルーティング設定
   namespace :admin do
     root 'homes#top'
-    resources :items
-    resources :genres
-    resources :genre_items
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, omly: [:show, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,21 @@
+<h2>会員一覧</h2>
+<table class="table table-hover table-inverse">
+            <thead>
+                <tr>
+                    <th>会員ID</th>
+                    <th>氏名</th>
+                    <th>メールアドレス</th>
+                    <th>ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @customers.each do |customer| %>
+                <tr>
+                    <td><%= customer.id %></td>
+                    <td><%= link_to customer.last_name first_name %></td>
+                    <td><%= customer.encrypted_password %></td>
+                    <td>ステータス</td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>

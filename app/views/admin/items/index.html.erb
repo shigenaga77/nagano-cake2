@@ -18,13 +18,10 @@
                       <% else %>
                         <%= image_tag 'no_image', size: "200x200" %>
                       <% end %>
-                    <td><%= @item.id %></td>
-                    <td><%= link_to item.name, item_path(@item.id) %></td>
-                    <td><%= @item.price %></td>
-                    <td><% b.tags.each do |tag| %>
-                            <%= tag.name %>
-                         <% end %>
-                    </td>
+                    <td><%= item.id %></td>
+                    <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                    <td><%= item.price %></td>
+                    <td><%= item.genre.name %></td>
                     <td></td>
                 </tr>
                 <% end %>
