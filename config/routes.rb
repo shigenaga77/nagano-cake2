@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
+  # 会員側のルーティング設定
+  scope module: :public do
+    root to: "homes#top"
+    get '/home/about' => 'homes#about', as: 'about'
+  end
    # 管理者側のルーティング設定
   namespace :admin do
     root 'homes#top'
