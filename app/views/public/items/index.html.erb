@@ -1,26 +1,41 @@
+<div>
+    <tabule>
+        <thead>
+            <tr>
+                <th>ジャンル検索</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= link_to "ケーキ",admin_genres_path %></td>
+            </tr>
+            <tr>
+                <td><%= link_to "焼き菓子",admin_genres_path %></td>
+            </tr>
+            <tr>
+                <td><%= link_to "プリン",admin_genres_path %></td>
+            </tr>
+            <tr>
+                <td><%= link_to "キャンディ",admin_genres_path %></td>
+            </tr>
+        </tbody>
+    </tabule>
+</div>
+
 <h5 class="mx-auto col-xl-9 mt-5 mb-4">商品一覧</h5>
-<%= link_to new_admin_item_path do %>
-<i class="fa-solid fa-plus"></i>
-<% end %>
     <div class="mx-auto col-xl-10">
         <table class="table table-hove">
             <thead>
                 <tr>
-                    <th>商品ID</th>
                     <th>商品名</th>
                     <th>税抜価格</th>
-                    <th>ジャンル</th>
-                    <th>ステータス</th>
                 </tr>
             </thead>
             <tbody>
                 <% @items.each do |item| %>
                 <tr>
-                    <td><%= item.id %></td>
                     <td><%= link_to item.name, admin_item_path(item.id) %></td>
                     <td><%= item.price %></td>
-                    <td><%= item.genre.name %></td>
-                    <td></td>
                 </tr>
                 <% end %>
             </tbody>

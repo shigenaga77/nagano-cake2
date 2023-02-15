@@ -13,24 +13,14 @@
       </thead>
       <tbody>
         <tr>
-          <td>商品名</td>
           <td><%= @item.name %></td>
         </tr>
         <tr>
-          <td>商品説明</td>
           <td><%= @item.introduction %></td>
-        </tr>
-        <tr>
-          <td>ジャンル</td>
-          <td><%= @item.genre.name %></td>
         </tr>
         <tr>
           <td>税抜価格</td>
           <td><%= @item.price %></td>
-        </tr>
-        <tr>
-          <td>ステータス</td>
-          <td>ステータス</td>
         </tr>
       </tbody>
     </table>
@@ -38,7 +28,7 @@
     
     <div class="mx-auto col-xl-3">
     <button type="button" class="btn btn-outline-dark">
-    <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+    <%= link_to "カートに入れる", edit_admin_item_path(@item.id) %>
     </button>
     </div>
   </div>
