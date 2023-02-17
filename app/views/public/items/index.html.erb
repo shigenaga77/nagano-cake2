@@ -27,14 +27,14 @@
         <table class="table table-hove">
             <thead>
                 <tr>
-                    <th>商品名</th>
-                    <th>税抜価格</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <% @items.each do |item| %>
                 <tr>
-                    <td><%= link_to item.name, admin_item_path(item.id) %></td>
+                    <td><%= image_tag item.image, size: "150x100" %></td>
+                    <td><%= link_to item.name, item_path(item.id) %></td>
                     <td><%= item.price %></td>
                 </tr>
                 <% end %>
@@ -42,6 +42,6 @@
         </table>
     </div>    
         <div class="mx-auto col-xl-1 ">
-        <%= paginate @items %>
+        <!--< paginate @items %>-->
         </div>
             

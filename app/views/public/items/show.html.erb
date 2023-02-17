@@ -1,4 +1,26 @@
-<h5 class="mx-auto col-xl-9 mt-5 mb-5">商品詳細</h5>
+<div>
+    <tabule>
+        <thead>
+            <tr>
+                <th>ジャンル検索</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= link_to "ケーキ",admin_genres_path %></td>
+            </tr>
+            <tr>
+                <td><%= link_to "焼き菓子",admin_genres_path %></td>
+            </tr>
+            <tr>
+                <td><%= link_to "プリン",admin_genres_path %></td>
+            </tr>
+            <tr>
+                <td><%= link_to "キャンディ",admin_genres_path %></td>
+            </tr>
+        </tbody>
+    </tabule>
+</div>
 
 <div class="container">  <!-- この行を追加 -->
   <div class="row">      <!-- この行を追加 -->
@@ -27,9 +49,12 @@
     </div>
     
     <div class="mx-auto col-xl-3">
-    <button type="button" class="btn btn-outline-dark">
-    <%= link_to "カートに入れる", edit_admin_item_path(@item.id) %>
-    </button>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit "カートに入れる", class: "btn btn-outline-dark" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get '/home/about' => 'homes#about', as: 'about'
     resources :customers, only: [:show, :edit, :update,]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
      # 退会確認画面
     get '/customers/:id/confirm' => 'customers#confirm', as: 'confirm'
   # 論理削除用のルーティング
