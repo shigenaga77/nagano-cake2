@@ -21,10 +21,15 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
-     # 退会確認画面
+    resources :orders, only: [:new, :index, :show, :create]
+    # 退会確認画面
     get '/customers/:id/confirm' => 'customers#confirm', as: 'confirm'
-  # 論理削除用のルーティング
+    # 論理削除用のルーティング
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+    # 注文情報確認画面
+    # post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+    # 注文完了画面
+    get '/orders/complete' => 'orders#complete', as: 'complete'
 
   end
    # 管理者側のルーティング設定
