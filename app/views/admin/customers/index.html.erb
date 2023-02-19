@@ -12,8 +12,8 @@
                 <% @customers.each do |customer| %>
                 <tr>
                     <td><%= customer.id %></td>
-                    <td><%= link_to customer.last_name first_name %></td>
-                    <td><%= customer.encrypted_password %></td>
+                    <td><%= link_to (customer.last_name+customer.first_name),admin_customer_path(customer.id) %></td>
+                    <td><%= customer.email %></td>
                     <td>ステータス</td>
                 </tr>
                 <% end %>

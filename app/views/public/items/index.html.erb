@@ -33,7 +33,14 @@
             <tbody>
                 <% @items.each do |item| %>
                 <tr>
-                    <td><%= image_tag item.image, size: "150x100" %></td>
+                    <!--<td><= image_tag item.item.image, size: "150x100" %></td>-->
+                    <td>
+                        <% if item.image.attached? %>
+                            <%= image_tag item.image, size: "100x100" %>
+                        <% else %>
+                            <%= image_tag 'no_image', size: "100x100" %>
+                        <% end %>
+                    </td>
                     <td><%= link_to item.name, item_path(item.id) %></td>
                     <td><%= item.price %></td>
                 </tr>
@@ -44,4 +51,3 @@
         <div class="mx-auto col-xl-1 ">
         <!--< paginate @items %>-->
         </div>
-            

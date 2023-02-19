@@ -24,7 +24,13 @@
 
 <div class="container">  <!-- この行を追加 -->
   <div class="row">      <!-- この行を追加 -->
-    <div class="col-lg-4"><%= image_tag @item.image, size: "300x250" %></div>
+    <div class="col-lg-4">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: "300x300" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300x300" %>
+      <% end %>
+      </div>
     <div class="col-lg-8">
       <table class="table table-borderless">
       <thead>

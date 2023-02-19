@@ -1,7 +1,15 @@
-<h5 class="mx-auto col-xl-9 mt-5 mb-4">商品一覧</h5>
-<%= link_to new_admin_item_path do %>
-<i class="fa-solid fa-plus"></i>
-<% end %>
+<div class="container">
+    <div class="mx-auto col-xl-9 mt-5 mb-4 row">
+        <div class="col-md-11">
+        <h5>商品一覧</h5>
+        </div>
+        <div class="col-md-1">
+        <%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-plus"></i>
+        <% end %>
+        </div>
+    </div>
+</div>
     <div class="mx-auto col-xl-10">
         <table class="table table-hove">
             <thead>

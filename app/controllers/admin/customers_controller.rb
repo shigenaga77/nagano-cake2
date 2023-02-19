@@ -1,4 +1,4 @@
-class Admin::CosutmersController < ApplicationController
+class Admin::CustomersController < ApplicationController
     def index
         @customers = Customer.all
     end
