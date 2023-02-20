@@ -1,9 +1,11 @@
 <h5>注文情報入力画面</h5>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
+<%= f.label :method_of_payment_credit_card, Order.method_of_payments_i18n[:credit_card] %>
 
-<%= f.radio_button :method_of_payment, Order.method_of_payment.key(0) %>
-<%= f.label :method_of_payment_credit_card, Order.method_of_payment_i18n[:credit_card] %>
+<%= f.radio_button :method_of_payment, Order.method_of_payments.key(1) %>
+<%= f.label :method_of_payment_transfer, Order.method_of_payments_i18n[:transfer]%>
 
-<%= f.radio_button :method_of_payment, Order.method_of_payment.key(1) %>
-<%= f.label :method_of_payment_transfer, Order.method_of_payment_i18n[:transfer]%>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :name) %>
 
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+<% end %>

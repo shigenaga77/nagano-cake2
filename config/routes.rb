@@ -22,12 +22,13 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :index, :show, :create]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     # 退会確認画面
     get '/customers/:id/confirm' => 'customers#confirm', as: 'confirm'
     # 論理削除用のルーティング
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     # 注文情報確認画面
-    # post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+    post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     # 注文完了画面
     get '/orders/complete' => 'orders#complete', as: 'complete'
 
