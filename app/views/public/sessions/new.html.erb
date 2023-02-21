@@ -1,19 +1,32 @@
-<h2>ログイン</h2>
-<h3>会員の方はこちらからログイン</h3>
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-<h2>会員登録がお済みでない方</h2>
-<%= link_to "こちら", new_customer_registration_path %>から会員登録を行ってください。
+<div class="container">
+    <h5 class="row mx-3 col-xl-10 mt-5">ログイン</h5>
+    <h6 class="row  mx-3 col-xl-10 mt-4 mb-4">会員の方はこちらからログイン</h6>
+    <%= form_with model: @customer, url: customer_session_path do |f| %>
+    <table class="mx-auto col-xl-10">
+      <thead>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.label :メールアドレス %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :パスワード %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "ログイン" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+    <h6 class="row mx-3 col-xl-10 mt-5">会員登録がお済みでない方</h6>
+    <div class="row mx-auto col-xl-10">
+    <%= link_to "こちら", new_customer_registration_path %>から会員登録を行ってください。
+    </div>
+</div>

@@ -1,2 +1,53 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<h5>注文情報確認</h5>
+<div class="mx-auto col-xl-10">
+        
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @order.each do |order| %>
+            <tr>
+                <td><%= image_tag order.item.image, size: "150x100" %><%= order.item.name %></td>
+                <td><%= order.item.with_tax_price %></td>
+                <td><%= order.item.amount %></td>
+                <td><%= cart_item.subtotal%></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>送料</td>
+                <td><%= order.postage %></td>
+            </tr>
+            <tr>
+                <td>商品合計</td>
+                <td><%= @total_price.round.to_s(:delimited)%></td>
+            </tr>
+            <tr>
+                <td>請求金額</td>
+                <td><%= order.payment %></td>
+            </tr>
+        </tbody>
+    </table>
+<strong>支払い方法</strong>
+<%= @order.method_of_payment %>
+<strong>お届け先</strong>
+<%= @order.address %>
+
+<button type="button" class="btn btn-outline-dark">
+    <%= link_to "注文を確定する", complete_path %>
+</button>

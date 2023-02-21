@@ -1,56 +1,73 @@
-<h2>新規会員登録</h2>
-
-<%= form_with model: @customer, url: customer_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :名前 %>
-    （姓）<%= f.text_field :last_name %>
-    （名）<%= f.text_field :first_name %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :フリガナ %>
-    （セイ）<%= f.text_field :last_name_kana %>
-    （カナ）<%= f.text_field :first_name_kana %>
-  </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :郵便番号 %>
-    <%= f.text_field :postal_code %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_field :address %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :電話番号（ハイフンなし） %>
-    <%= f.text_field :telephone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（６文字以上） %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+<div class="container">
+  <div class="row mx-6 col-xl-10">
+    <h5 class="mt-5 mb-5">新規会員登録</h5>
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+    <table>
+      <thead>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= f.label :名前 %></td>
+          <td>（姓）<%= f.text_field :last_name %></td>
+          <td>（名）<%= f.text_field :first_name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :フリガナ %></td>
+          <td>（セイ）<%= f.text_field :last_name_kana %></td>
+          <td>（カナ）<%= f.text_field :first_name_kana %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :メールアドレス %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :郵便番号 %></td>
+          <td><%= f.text_field :postal_code %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :住所 %></td>
+          <td><%= f.text_field :address %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :電話番号（ハイフンなし） %></td>
+          <td><%= f.text_field :telephone_number %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :パスワード（６文字以上） %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+          </td>
+          <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :パスワード（確認用） %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "新規登録" %></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認用） %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
-<h2>既に登録済みの方</h2>
-<%= link_to "こちら",customer_session_path %>からログインしてください。
+  <h5 class="row mx-6 col-xl-10">既に登録済みの方</h5>
+    <div>
+    <%= link_to "こちら",customer_session_path %>からログインしてください。
+    </div>
+</div>
