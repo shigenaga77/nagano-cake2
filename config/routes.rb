@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   
   # 会員側のルーティング設定
   scope module: :public do
+    # 注文完了画面
+    get '/orders/complete' => 'orders#complete', as: 'complete'
     root to: "homes#top"
     get '/home/about' => 'homes#about', as: 'about'
     resources :customers, only: [ :index, :show, :edit, :update,]
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
     # 注文情報確認画面
     post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     # 注文完了画面
-    get '/orders/complete' => 'orders#complete', as: 'complete'
+    # get '/orders/complete' => 'orders#complete', as: 'complete'
 
   end
    # 管理者側のルーティング設定

@@ -11,19 +11,23 @@
         </tr>
     </thead>
     <tbody>
-        <% @order each do |order| %>
+        <% @orders.each do |order| %>
         <tr>
             <td><%= order.updated_at %></td>
             <td>
                 <%= "〒"+order.postal_code+order.address %><br>
                 <%= order.name %>
             </td>
-            <td><%= order.item.item.name %></td>
+            <td>
+                <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %>
+                <% end %>
+            </td>
             <td><%= order.payment %></td>
             <td>ステータス</td>
             <td>
                 <button type="button" class="btn btn-outline-success">
-                    <%= link_to "表示する", order_path %>
+                    <%= link_to "表示する", order_path(order.id) %>
                 </button>
             </td>
         </tr>
