@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     # 注文完了画面
     get '/orders/complete' => 'orders#complete', as: 'complete'
     root to: "homes#top"
-    get '/home/about' => 'homes#about', as: 'about'
+    get '/about' => 'homes#about', as: 'about'
     resources :customers, only: [ :index, :show, :edit, :update,]
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'

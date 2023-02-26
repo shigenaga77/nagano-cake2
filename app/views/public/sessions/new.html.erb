@@ -1,8 +1,8 @@
 <div class="container">
     <h5 class="row mx-3 col-xl-10 mt-5">ログイン</h5>
-    <h6 class="row  mx-3 col-xl-10 mt-4 mb-4">会員の方はこちらからログイン</h6>
+    <h6 class="row mx-5 col-xl-10 mt-4 mb-4">会員の方はこちらからログイン</h6>
     <%= form_with model: @customer, url: customer_session_path do |f| %>
-    <table class="mx-auto col-xl-10">
+    <table class="mx-auto col-xl-10 mt-3">
       <thead>
         <tr>
           <td></td>
@@ -12,15 +12,15 @@
       <tbody>
         <tr>
           <td><%= f.label :メールアドレス %></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %></td>
         </tr>
         <tr>
           <td><%= f.label :パスワード %></td>
-          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password", size: "40" %></td>
         </tr>
         <tr>
           <td></td>
-          <td><%= f.submit "ログイン" %></td>
+          <td><%= f.submit "ログイン", class: 'btn btn-primary' %></td>
         </tr>
       </tbody>
     </table>

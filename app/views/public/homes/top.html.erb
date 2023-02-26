@@ -1,56 +1,56 @@
-<div style="position: relative; display:inline-block;">
-<img src="assets/cake.jpg" alt="topimg">
-<div style="position: absolute; top: 50%; left: 50%; max-width: 100%; max-height: 100%; padding: 30px; text-align: left;">
-<strong>
-ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の観覧はできますが、<br>
-        購入には会員登録が必要になります。
-</strong>
-</div></div>
-</div>
-<div>
-    <tabule>
-        <thead>
-            <tr>
-                <th>ジャンル検索</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= link_to "ケーキ",admin_genres_path %></td>
-            </tr>
-            <tr>
-                <td><%= link_to "焼き菓子",admin_genres_path %></td>
-            </tr>
-            <tr>
-                <td><%= link_to "プリン",admin_genres_path %></td>
-            </tr>
-            <tr>
-                <td><%= link_to "キャンディ",admin_genres_path %></td>
-            </tr>
-        </tbody>
-    </tabule>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mt-5">
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>ジャンル検索</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= link_to "ケーキ",admin_genres_path %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "焼き菓子",admin_genres_path %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "プリン",admin_genres_path %></td>
+                    </tr>
+                    <tr>
+                        <td><%= link_to "キャンディ",admin_genres_path %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-9 mt-5">
+            <%= image_tag 'cake.jpg', size: "1000x700" %>
+            <div style="position: absolute; top: 50%; left: 50%; max-width: 100%; max-height: 100%; padding: 30px; text-align: left;">
+            <strong>
+            ようこそ、ながのCAKEへ！<br>
+                    このサイトは、ケーキ販売のECサイトになります。<br>
+                    会員でない方も商品の観覧はできますが、<br>
+                    購入には会員登録が必要になります。
+            </strong>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!--アソシエーションが必要-->
-<!--<h4>新着商品</h4>-->
-<!--< @items.each do |item| %>-->
-<!--    <tabule>-->
-<!--        <thead><tr><th></th></tr></thead>-->
-<!--        <tbody>-->
-<!--            <tr>-->
-<!--                <td><= item.id %></td>-->
-                <!--<td><= link_to item.name, admin_item_path(item.id) %></td>-->
-<!--                <td><= item.price %></td>-->
-<!--                <td><= item.genre.name %></td>-->
-<!--                <td></td>-->
-<!--            </tr>-->
-<!--        </tbody>-->
-<!--    </tabule>-->
-<!--< end %>-->
-<!--</div>    -->
-<!--    <div class="mx-auto col-xl-1 ">-->
-<!--        <= paginate @items %>-->
-<!--    </div>-->
-            
+<div class="mx-auto col-xl-4">
+    <h4 class="mt-5 mb-5"><strong>新着商品</strong></h4>
+        <% @items.first(4).each do |item| %>
+            <% if item.image.attached? %>
+                <%= image_tag item.image, size: "150x100" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "150x100" %>
+            <% end %><br>
+            <%= link_to item.name, admin_item_path(item.id) %><br>
+            <%= "¥"+item.price.to_s %><br>
+        <% end %>
+</div>
+
+<p class="text-right">
+<%= link_to "すべての商品を見る>", items_path %>    
+</p>

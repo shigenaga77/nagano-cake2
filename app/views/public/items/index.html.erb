@@ -1,53 +1,56 @@
-<div>
-    <tabule>
-        <thead>
-            <tr>
-                <th>ジャンル検索</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><%= link_to "ケーキ",admin_genres_path %></td>
-            </tr>
-            <tr>
-                <td><%= link_to "焼き菓子",admin_genres_path %></td>
-            </tr>
-            <tr>
-                <td><%= link_to "プリン",admin_genres_path %></td>
-            </tr>
-            <tr>
-                <td><%= link_to "キャンディ",admin_genres_path %></td>
-            </tr>
-        </tbody>
-    </tabule>
-</div>
-
-<h5 class="mx-auto col-xl-9 mt-5 mb-4">商品一覧</h5>
-    <div class="mx-auto col-xl-10">
-        <table class="table table-hove">
-            <thead>
-                <tr>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @items.each do |item| %>
-                <tr>
-                    <!--<td><= image_tag item.item.image, size: "150x100" %></td>-->
-                    <td>
-                        <% if item.image.attached? %>
-                            <%= image_tag item.image, size: "100x100" %>
-                        <% else %>
-                            <%= image_tag 'no_image', size: "100x100" %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mt-5">
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ジャンル検索</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><%= link_to "ケーキ",items_path %></td>
+                            </tr>
+                            <tr>
+                                <td><%= link_to "焼き菓子",items_path %></td>
+                            </tr>
+                            <tr>
+                                <td><%= link_to "プリン",items_path %></td>
+                            </tr>
+                            <tr>
+                                <td><%= link_to "キャンディ",items_path %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        
+            <div class="mx-auto col-md-9">
+            <h5 class="mt-5 mb-4">商品一覧</h5>
+                <table class="table table-hove">
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @items.first(8).each do |item| %>
+                        <tr>
+                            <td>
+                                <% if item.image.attached? %>
+                                    <%= image_tag item.image, size: "100x100" %>
+                                <% else %>
+                                    <%= image_tag 'no_image', size: "100x100" %>
+                                <% end %>
+                            </td>
+                            <td><%= link_to item.name, item_path(item.id) %></td>
+                            <td><%= item.price %></td>
+                        </tr>
                         <% end %>
-                    </td>
-                    <td><%= link_to item.name, item_path(item.id) %></td>
-                    <td><%= item.price %></td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
-    </div>    
-        <div class="mx-auto col-xl-1 ">
-        <!--< paginate @items %>-->
-        </div>
+                    </tbody>
+                </table>
+            </div>    
+                <div class="mx-auto col-xl-1 ">
+                <%= paginate @items %>
+                </div>
+    </div>
+</div>
