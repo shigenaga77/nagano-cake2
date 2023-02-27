@@ -14,7 +14,7 @@
             <tbody>
                 <% @cart_items.each do |cart_item| %>
                 <tr>
-                    <td><%= image_tag cart_item.item.image, size: "150x100" %><%= cart_item.item.name %></td>
+                    <td><%= image_tag cart_item.item.image, size: "100x50" %><%= cart_item.item.name %></td>
                     <td><%= cart_item.item.with_tax_price %></td>
                     <td><%= cart_item.amount %></td>
                     <td><%= cart_item.subtotal%></td>
@@ -41,19 +41,30 @@
                 </tr>
                 <tr>
                     <td class="table-active">請求金額</td>
-                    <%= @order.payment = @total_price+@order.postage %>
+                    <% @order.payment = @total_price+@order.postage %>
                     <td><%= @order.payment %></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-<h5><strong>支払い方法</strong></h5>
-<%= @order.method_of_payment_i18n %>
 
-<h5><strong>お届け先</strong></h5>
-<%= "〒"+@order.postal_code+@order.address %><br>
-<%= @order.name %>
+<table>
+    <thead><tr></tr></thead>
+    <tbody>
+        <tr>
+            <td><strong>支払い方法</strong></td>
+            <td><%= @order.method_of_payment_i18n %></td>
+        </tr>
+        <tr>
+            <td><strong>お届け先</strong></td>
+            <td><%= "〒"+@order.postal_code+@order.address %><br>
+                <%= @order.name %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
    <%= f.hidden_field :customer_id %>

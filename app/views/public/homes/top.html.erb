@@ -40,7 +40,9 @@
 
 <div class="mx-auto col-xl-4">
     <h4 class="mt-5 mb-5"><strong>新着商品</strong></h4>
+    <div class="d-flex flex-row">
         <% @items.first(4).each do |item| %>
+        <div class="mx-3">
             <% if item.image.attached? %>
                 <%= image_tag item.image, size: "150x100" %>
               <% else %>
@@ -48,7 +50,9 @@
             <% end %><br>
             <%= link_to item.name, admin_item_path(item.id) %><br>
             <%= "¥"+item.price.to_s %><br>
+        </div>
         <% end %>
+    </div>
 </div>
 
 <p class="text-right">

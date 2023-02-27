@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <td class="table-active">注文日</td>
-                    <td><%= @order.updated_at %></td>
+                    <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
                 </tr>
                 <tr>
                     <td class="table-active">配送先</td>
@@ -69,13 +69,12 @@
         </tr>
     </thead>
     <tbody>
-            <% @orders.each do |order| %>
+            <% @order.order_details.each do |order_detail| %>
             <tr>
-                <td>
-                    <% order.order_details.each do |order_detail| %>
-                    <%= order_detail.item.name %>
-                    <% end %>
-                </td>
+                <td><%= order_detail.item.name %></td>
+                <td><%= order_detail.price %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= order_detail.price*order_detail.amount %></td>
             </tr>
             <% end %>
     </tbody>

@@ -25,31 +25,22 @@
                 </div>
         
             <div class="mx-auto col-md-9">
-            <h5 class="mt-5 mb-4">商品一覧</h5>
-                <table class="table table-hove">
-                    <thead>
-                        <tr>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @items.first(8).each do |item| %>
-                        <tr>
-                            <td>
-                                <% if item.image.attached? %>
-                                    <%= image_tag item.image, size: "100x100" %>
-                                <% else %>
-                                    <%= image_tag 'no_image', size: "100x100" %>
-                                <% end %>
-                            </td>
-                            <td><%= link_to item.name, item_path(item.id) %></td>
-                            <td><%= item.price %></td>
-                        </tr>
-                        <% end %>
-                    </tbody>
-                </table>
+            <h5 class="mt-5 mb-4"><strong>商品一覧</strong></h5>
+            <div class="d-flex flex-wrap">
+                <% @items.first(8).each do |item| %>
+                <div class="mx-3">
+                    <% if item.image.attached? %>
+                        <%= image_tag item.image, size: "150x150" %>
+                    <% else %>
+                        <%= image_tag 'no_image', size: "150x150" %>
+                    <% end %><br>
+                    <strong><%= link_to item.name, item_path(item.id) %></strong><br>
+                    <strong>¥<%= item.price %></strong>
+                </div>
+                <% end %>
+            </div>
             </div>    
-                <div class="mx-auto col-xl-1 ">
+                <div class="mx-auto col-xl-1 mt-5">
                 <%= paginate @items %>
                 </div>
     </div>

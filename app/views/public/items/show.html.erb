@@ -40,19 +40,16 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= @item.name %></td>
+          <td><strong><%= @item.name %></strong></td>
         </tr>
         <tr>
           <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td><%= "¥"+@item.price.to_s %></td>
+          <td><strong><%= "¥"+@item.price.to_s %></strong>（税込）</td>
         </tr>
       </tbody>
     </table>
-    </div>
-    
-    <div class="mx-auto col-md-3">
       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
@@ -60,5 +57,6 @@
           <%= f.submit "カートに入れる", class: "btn btn-outline-dark" %>
       <% end %>
     </div>
+    
   </div>
 </div>
