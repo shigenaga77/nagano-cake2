@@ -29,8 +29,14 @@
                 <td><%= f.text_field :price %></td>
             </tr>
             <tr>
-                <td>ステータス</td>
-                <td>ステータス</td>
+                <td><%= f.label :is_active,"販売ステータス" %></td>
+                <td>
+                    <%= f.radio_button :is_active, "販売中" %>
+                    <%= f.label :is_active, "販売中" %><br>
+                    
+                    <%= f.radio_button :is_active, "販売停止中" %>
+                    <%= f.label :is_active, "販売停止中"%>
+                </td>
             </tr>
         </tbody>
     </table>

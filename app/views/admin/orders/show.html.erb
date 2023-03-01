@@ -1,5 +1,5 @@
 <div class="container">
-    <h5>注文履歴詳細</h5>
+    <h5 class="mt-5 ml-5 mb-3">注文履歴詳細</h5>
     <div class="row">
         <table>
             <thead>
@@ -12,7 +12,7 @@
                 </tr>
                 <tr>
                     <td><strong>注文日</strong></td>
-                    <td><%= @order.created_at %></td>
+                    <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
                 </tr>
                 <tr>
                     <td><strong>配送先</strong></td>
@@ -27,14 +27,19 @@
                 </tr>
                 <tr>
                     <td><strong>注文ステータス</strong></td>
-                    <td><%= @order.status %></td>
+                    <td>
+                    <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+                        <%= f.select :status, Order.statuses.keys, class: "status" %>
+                        <%= f.submit "更新" , class: "btn btn-outline-success" %>
+                    <% end %>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="row">
-        <div class="col-8">
-            <table>
+        <div class="col-8 mr-5">
+            <table class="table table-hover">
                 <thead>
                     <tr class="table-active">
                         <th>商品名</th>
@@ -51,13 +56,18 @@
                         <td><%= order_detail.price %></td>
                         <td><%= order_detail.amount %></td>
                         <td><%= order_detail.price*order_detail.amount %></td>
-                        <td></td>
+                        <td>
+                            <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
+                                <%= f.select :making_status, OrderDetail.making_statuses.keys, class: "making_status" %>
+                                <%= f.submit "更新" , class: "btn btn-outline-success" %>
+                            <% end %>
+                        </td>
                     </tr>
                     <% end %>
                 </tbody>
             </table>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <table>
                 <thead>
                     <tr></tr>
@@ -73,8 +83,7 @@
                     </tr>
                     <tr>
                         <td><strong>請求金額合計</strong></td>
-                        <!--< @order.payment = @total_price+@order.postage %>-->
-                        <td><%= @order.payment %>円</td>
+                        <td><strong><%= @order.payment %>円</strong></td>
                     </tr>
                 </tbody>
             </table>
