@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-    <%= form_with model: @customer, url: customer_path do |f| %>
+    <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
         <tr>
           <td><%= f.label :氏名 %></td>
           <td><%= f.text_field :last_name %></td>

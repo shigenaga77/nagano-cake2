@@ -10,8 +10,8 @@ class Public::CustomersController < ApplicationController
     
     def update
         @customer = Customer.find(params[:id])
-        @customer.updatte(customer_params)
-        redirect_to customers_path
+        @customer.update(customer_params)
+        redirect_to customer_path(@customer)
     end
     
     def comfirm

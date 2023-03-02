@@ -16,7 +16,8 @@
                 <tr>
                     <td class="table-active">配送先</td>
                     <td>
-                        <%= "〒"+@order.postal_code+@order.address %><br>
+                        <%= "〒"+@order.postal_code %><br>
+                        <%= @order.address %><br>
                         <%= @order.name %>
                     </td>
                 </tr>
@@ -26,7 +27,7 @@
                 </tr>
                 <tr>
                     <td class="table-active">ステータス</td>
-                    <td></td>
+                    <td><%= @order.status %></td>
                 </tr>
             </tbody>
         </table>

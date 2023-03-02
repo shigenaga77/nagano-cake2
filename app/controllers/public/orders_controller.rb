@@ -20,8 +20,8 @@ class Public::OrdersController < ApplicationController
     # 新規住所
   elsif params[:order][:sel_add] == "2"
     @order.postal_code = params[:order][:postal_code]
-    @order.address = [:order][:address]
-    @order.name = [:order][:name]
+    @order.address = params[:order][:address]
+    @order.name = params[:order][:name]
   else
     render 'new'
   end

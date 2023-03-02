@@ -1,7 +1,10 @@
-<h2>会員一覧</h2>
-<table class="table table-hover table-inverse">
+<div class="container">
+    <h5 class="mx-auto col-xl-10 mt-4 mb-5">会員一覧</h5>
+    <div class="row">
+        <div class="mx-auto col-8">
+        <table class= "table table-hover table-inverse">
             <thead>
-                <tr>
+                <tr class="table-active">
                     <th>会員ID</th>
                     <th>氏名</th>
                     <th>メールアドレス</th>
@@ -14,8 +17,17 @@
                     <td><%= customer.id %></td>
                     <td><%= link_to (customer.last_name+customer.first_name),admin_customer_path(customer.id) %></td>
                     <td><%= customer.email %></td>
-                    <td>ステータス</td>
+                    <td>
+                        <% if customer.is_deleted %>
+                            退会
+                        <% else %>
+                            <%= "有効" %>
+                        <% end %>
+                    </td>
                 </tr>
                 <% end %>
             </tbody>
         </table>
+        </div>
+    </div>
+</div>

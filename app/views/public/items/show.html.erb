@@ -23,14 +23,14 @@
                         </tbody>
                     </table>
                 </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mt-5">
       <% if @item.image.attached? %>
         <%= image_tag @item.image, size: "300x300" %>
       <% else %>
         <%= image_tag 'no_image', size: "300x300" %>
       <% end %>
       </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mt-5">
       <table class="table table-borderless">
       <thead>
         <tr>

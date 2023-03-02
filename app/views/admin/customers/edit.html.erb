@@ -36,11 +36,17 @@
             </tr>
             <tr>
                 <td><%= f.label "メールアドレス" %></td>
-                <td><%= f.text_field :encrypted_password %></td>
+                <td><%= f.text_field :email %></td>
             </tr>
             <tr>
-                <td>会員ステータス</td>
-                <td></td>
+                <td><%= f.label :is_active,"会員ステータス" %></td>
+                <td>
+                    <%= f.radio_button :is_deleted, :false %>
+                    <%= f.label :is_deleted, "有効" %>
+                    
+                    <%= f.radio_button :is_deleted, :true %>
+                    <%= f.label :is_deleted, "退会"%>
+                </td>
             </tr>
         </tbody>
     </table>

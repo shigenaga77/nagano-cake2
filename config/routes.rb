@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get '/orders/complete' => 'orders#complete', as: 'complete'
     root to: "homes#top"
     get '/about' => 'homes#about', as: 'about'
-    resources :customers, only: [ :index, :show, :edit, :update,]
+    resources :customers, only: [:show, :edit, :update,]
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]
@@ -31,8 +31,6 @@ Rails.application.routes.draw do
     patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     # 注文情報確認画面
     post '/orders/confirm' => 'orders#confirm', as: 'orders_confirm'
-    # 注文完了画面
-    # get '/orders/complete' => 'orders#complete', as: 'complete'
 
   end
    # 管理者側のルーティング設定

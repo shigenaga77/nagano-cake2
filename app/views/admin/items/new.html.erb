@@ -1,5 +1,5 @@
 <h5 class="mx-auto col-xl-8 mt-4 mb-5">商品新規登録</h5>
-    <div class="mx-auto col-xl-4"><%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    <div class="mx-auto col-xl-5"><%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
     <table class="table table-md table-borderless">
         <thead>
             <tr>
@@ -31,10 +31,10 @@
             <tr>
                 <td><%= f.label :is_active,"販売ステータス" %></td>
                 <td>
-                    <%= f.radio_button :is_active, "販売中" %>
-                    <%= f.label :is_active, "販売中" %><br>
+                    <%= f.radio_button :is_active, :true %>
+                    <%= f.label :is_active, "販売中" %>
                     
-                    <%= f.radio_button :is_active, "販売停止中" %>
+                    <%= f.radio_button :is_active, :false %>
                     <%= f.label :is_active, "販売停止中"%>
                 </td>
             </tr>
