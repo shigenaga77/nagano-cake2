@@ -80,17 +80,7 @@
       <%= yield %>
     </main>
     <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <p>CopyRight Infratop.inc</p>
-            <%= link_to "customer_log_out", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
-            <h2>会員登録がお済みでない方</h2>
-            <%= link_to "こちら", new_customer_registration_path %>から会員登録を行ってください。
-
-          </div>
-        </div>
-      </div>
+      <div class="mt-5"></div>
     </footer>
   </body>
 </html>
