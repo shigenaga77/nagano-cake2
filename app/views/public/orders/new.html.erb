@@ -18,7 +18,7 @@
             
             <%= f.radio_button :sel_add, 1 %>登録済み住所から選択<br>
             <div class="ml-3">   
-            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+            <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %><br>
             </div>
             
             <%= f.radio_button :sel_add, 2 %>新しいお届け先

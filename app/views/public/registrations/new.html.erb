@@ -1,5 +1,6 @@
 <div class="container">
     <h5 class="row mx-auto col-xl-10 mt-5 mb-5">新規会員登録</h5>
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <div class="row mx-auto col-xl-12">
       <%= render "public/shared/error_messages", resource: resource %>
     <table>
@@ -13,7 +14,6 @@
         </tr>
       </thead>
       <tbody>
-    <%= form_with model: @customer, url: customer_registration_path do |f| %>
         <tr>
           <td><%= f.label :名前 %></td>
           <td>（姓）</td>
@@ -75,10 +75,10 @@
           <td><%= f.submit "新規登録", class: 'btn btn-success' %></td>
           <td></td>
         </tr>
-    <% end %>
       </tbody>
     </table>
   </div>
+    <% end %>
   <h5 class="row mx-6 col-xl-10">既に登録済みの方</h5>
     <div>
     <%= link_to "こちら",customer_session_path %>からログインしてください。

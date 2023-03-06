@@ -1,5 +1,6 @@
 <div class="container">
     <h5 class="row mx-auto col-xl-10 mt-5 mb-5">会員情報編集</h5>
+    <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
   <div class="row">
     <table class="col-10">
       <thead>
@@ -10,7 +11,6 @@
         </tr>
       </thead>
       <tbody>
-    <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
         <tr>
           <td><%= f.label :氏名 %></td>
           <td><%= f.text_field :last_name %></td>
@@ -50,8 +50,9 @@
             </button>
           </td>
         </tr>
-      <% end %>
       </tbody>
     </table>
+      <% end %>
   </div>
+</div>
   
