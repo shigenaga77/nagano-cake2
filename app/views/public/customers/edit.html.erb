@@ -1,6 +1,6 @@
 <div class="container">
     <h5 class="row mx-auto col-xl-10 mt-5 mb-5">会員情報編集</h5>
-    <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+    <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
   <div class="row">
     <table class="col-10">
       <thead>

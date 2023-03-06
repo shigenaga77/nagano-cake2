@@ -1,30 +1,30 @@
 class Public::CustomersController < ApplicationController
     
     def show
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
     end
     
     def edit
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
     end
     
     def update
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
         @customer.update(customer_params)
-        redirect_to customer_path(@customer)
+        redirect_to customers_path
     end
     
     def comfirm
-         @customer = Customer.find(params[:id])
+         @customer = current_customer
     end
     
     def withdraw
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
         # is_deletedカラムをtrueに変更することにより削除フラグを立てる
         @customer.update(is_deleted: true)
         reset_session
         flash[:notice] = "退会処理を実行いたしました"
-        redirect_to about_path
+        redirect_to root_path
     end
     
     private
@@ -32,4 +32,5 @@ class Public::CustomersController < ApplicationController
     def customer_params
         params.require(:customer).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
     end
+    
 end

@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
   if params[:order][:sel_add] == "0"
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.name = current_customer.first_name + current_customer.last_name
+    @order.name = current_customer.last_name + current_customer.first_name
     # 登録済みの住所
   elsif params[:order][:sel_add] == "1"
     @address = Address.find(params[:order][:address_id])
@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
     render 'new'
   end
     
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @order.customer_id = current_customer.id
     @total_price = @cart_items.inject(0) { |sum, order| sum + order.subtotal }
   end
